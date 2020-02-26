@@ -24,11 +24,11 @@ class White:
     def get(self):
         return jsonify({'color': 'white'})
 
-app.add_resource(Red, '/color/red')
-app.add_resource(Red, '/color/blue')
-app.add_resource(Red, '/color/green')
-app.add_resource(Red, '/color/yellow')
-app.add_resource(Red, '/color')
+api.add_resource(Red, '/color/red')
+api.add_resource(Red, '/color/blue')
+api.add_resource(Red, '/color/green')
+api.add_resource(Red, '/color/yellow')
+api.add_resource(Red, '/color')
 
 
 if __name__ == "__main__":
