@@ -1,9 +1,7 @@
 FROM python:3.8-alpine 
 EXPOSE 8080 
-WORKDIR /opt/app 
+WORKDIR /usr/src/app 
 COPY requirements.txt . 
-RUN apk add --no-cache --virtual .build-deps build-base gcc musl-dev python3 \ 
-&& pip3 install -r requirements.txt \
-&& apk del .build-deps 
-COPY app ./app 
-ENTRYPOINT ["python3", "-m", "app"]
+RUN python3 -m pip3 install --user --no-cache-dir -r requirements.txt 
+COPY . . 
+ENTRYPOINT ["python3", "app.py"]
