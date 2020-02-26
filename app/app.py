@@ -6,6 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 
 for route, path in routes:
+    print(route + ', ' + path + '\n')
     app.add_resource(route, path)
 
 if __name__ == "__main__":
