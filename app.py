@@ -1,10 +1,17 @@
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
+from pymongo import MongoClient
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
+client = MongoClient('mongodb://db:27017')
+db = client.projectDB
+
+#collections
+products = db['product']
+
 
 class Red(Resource):
     def get(self):
@@ -25,6 +32,10 @@ class Yellow(Resource):
 class White(Resource):
     def get(self):
         return jsonify({'color': 'white'})
+
+class Products(Resource):
+    def get(self):
+        return jsonify({'products': products.find()})
 
 api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
