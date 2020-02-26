@@ -4,23 +4,23 @@ from flask_restful import Api, Resource
 app = Flask(__name__)
 api = Api(app)
 
-class Red:
+class Red(Resource):
     def get(self):
         return jsonify({'color': 'red'})
 
-class Blue:
+class Blue(Resource):
     def get(self):
         return jsonify({'color': 'blue'})
 
-class Green:
+class Green(Resource):
     def get(self):
         return jsonify({'color': 'green'})
 
-class Yellow:
+class Yellow(Resource):
     def get(self):
         return jsonify({'color': 'yellow'})
 
-class White:
+class White(Resource):
     def get(self):
         return jsonify({'color': 'white'})
 
