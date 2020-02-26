@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: be
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mongo:3.6.4
+    container_name: db
+    ports:
+      - "27018:27017"
+    restart: always
+
+  web:
+    image: sintaksis1331/tpu-fe:8
+    container_name: fe
+    ports:
+      - "80:80"
+    depends_on:
+      - app
