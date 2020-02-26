@@ -26,7 +26,7 @@ class White(Resource):
     def get(self):
         return jsonify({'color': 'white'})
 
-api.add_resource(Red, '/color/red', True)
+api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
 api.add_resource(Green, '/color/green')
 api.add_resource(Yellow, '/color/yellow')
