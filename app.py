@@ -35,7 +35,9 @@ class White(Resource):
 
 class GetAllProducts(Resource):
     def get(self):
-        return jsonify({'products': products.find()})
+        products = products.find()
+        print(products)
+        return jsonify({'products': products})
 
 api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
