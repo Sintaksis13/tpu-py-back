@@ -1,0 +1,18 @@
+from abc import ABC, abstractmethod
+from bson.objectid import ObjectId
+
+
+class MongoEntityDao(ABC):
+	def __init__(self, db, collection_name: str):
+		self.collection = db[collection_name]
+
+	async def create(self, entity):
+		document = self._to_mongo_document(entity)
+		insert_result = await selt.collection.insert_one(document)
+		return str(insert_result.inserted_id)
+
+	async def list(self):
+		documents = await self \
+			.collection.find({}) \
+			.to_list()
+		return list(map(self._from_mongo_document, documents))
