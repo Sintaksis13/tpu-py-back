@@ -30,7 +30,7 @@ api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
 api.add_resource(Green, '/color/green')
 api.add_resource(Yellow, '/color/yellow')
-api.add_resource(White, '/color')
+api.add_resource(White, '/color/')
 
 
 if __name__ == "__main__":
