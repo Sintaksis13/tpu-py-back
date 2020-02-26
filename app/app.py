@@ -6,6 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 
 for route, path in routes:
+    print('Hello')
     print(route + ', ' + path + '\n')
     app.add_resource(route, path)
 
