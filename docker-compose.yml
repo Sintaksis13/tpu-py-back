@@ -14,7 +14,7 @@ services:
     container_name: db
     ports:
       - "27018:27017"
-    restart: always
+    restart: "no"
 
   web:
     image: sintaksis1331/tpu-fe:8
