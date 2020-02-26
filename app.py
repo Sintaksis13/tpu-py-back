@@ -33,7 +33,7 @@ class White(Resource):
     def get(self):
         return jsonify({'color': 'white'})
 
-class Products(Resource):
+class GetAllProducts(Resource):
     def get(self):
         return jsonify({'products': products.find()})
 
@@ -42,6 +42,7 @@ api.add_resource(Blue, '/color/blue')
 api.add_resource(Green, '/color/green')
 api.add_resource(Yellow, '/color/yellow')
 api.add_resource(White, '/color/')
+api.add_resource(GetAllProducts, '/products')
 
 
 if __name__ == "__main__":
