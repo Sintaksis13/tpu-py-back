@@ -38,7 +38,7 @@ class GetAllProducts(Resource):
     def get(self):
         products = productsCollection.find()
         product_list = list(map(self._from_document_to_product, products))
-        return jsonify({'products': product_list})
+        return jsonify(product_list)
 
     def _from_document_to_product(self, product):
         return Product(id=str(product.get('_id')), title=product.get('title'), 
