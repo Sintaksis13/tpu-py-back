@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
-from pymongo import MongoClient
+from pymongo import MongoClient, ObjectId
 from dataclasses import dataclass
 
 app = Flask(__name__)
@@ -51,6 +51,10 @@ class CreateProduct(Resource):
         inserted = productsCollection.insert_one(data)
         return str(inserted.inserted_id)
 
+class DeleteProduct(Resource):
+    def delete(self, id):
+        productsCollection.delete_one("_id": ObjectId(id))
+
 class AdminCheck(Resource):
     def post(self):
         adminPass = 'pass'
@@ -79,6 +83,7 @@ api.add_resource(Yellow, '/color/yellow')
 api.add_resource(White, '/color/')
 api.add_resource(GetAllProducts, '/products')
 api.add_resource(CreateProduct, '/products')
+api.add_resource(DeleteProduct, '/products')
 api.add_resource(AdminCheck, '/admin/check')
 
 
