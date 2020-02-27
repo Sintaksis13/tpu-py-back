@@ -41,7 +41,7 @@ class GetAllProducts(Resource):
         return jsonify({'products': product_list})
 
 class AdminCheck(Resource):
-    def get(self):
+    def post(self):
         adminPass = 'pass'
         data = request.get_json()
         if data['adminPass'] == adminPass:
