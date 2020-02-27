@@ -83,7 +83,7 @@ api.add_resource(Yellow, '/color/yellow')
 api.add_resource(White, '/color/')
 api.add_resource(GetAllProducts, '/products')
 api.add_resource(CreateProduct, '/products')
-api.add_resource(DeleteProduct, '/products/<str:id>')
+api.add_resource(DeleteProduct, '/products/<id>')
 api.add_resource(AdminCheck, '/admin/check')
 
 
