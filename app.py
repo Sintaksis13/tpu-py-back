@@ -57,6 +57,7 @@ api.add_resource(Green, '/color/green')
 api.add_resource(Yellow, '/color/yellow')
 api.add_resource(White, '/color/')
 api.add_resource(GetAllProducts, '/products')
+api.add_resource(AdminCheck, '/admin/check')
 
 
 if __name__ == "__main__":
