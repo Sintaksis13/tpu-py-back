@@ -36,7 +36,7 @@ class White(Resource):
 class GetAllProducts(Resource):
     def get(self):
         products = productsCollection.find()
-            product_list = list(map(self.replaceId, products))
+        product_list = list(map(self.replaceId, products))
         fixed_products = replaceIds(product_list)
         return jsonify({'products': fixed_products})
 
