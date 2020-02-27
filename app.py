@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
+from dataclasses import dataclass
 
 app = Flask(__name__)
 CORS(app)
@@ -40,8 +41,8 @@ class GetAllProducts(Resource):
         return jsonify({'products': product_list})
 
     def _replaceId(self, product):
-        return {'id': str(product.get('_id')), 'title': product.get('title'), 
-        'description': product.get('description'), 'price': product.get('price')}
+        return Product(id=str(product.get('_id')), title=product.get('title'), 
+        description=product.get('description'), price=product.get('price')}
 
 class CreateProduct(Resource):
     def post(self):
@@ -59,6 +60,15 @@ class AdminCheck(Resource):
             response = {'admin': False}
         
         return jsonify(response)
+
+
+#data classes
+@dataclass(frozen=True)
+class Product:
+    id: str
+    title: str
+    description: str
+    price: float
 
 
 api.add_resource(Red, '/color/red')
