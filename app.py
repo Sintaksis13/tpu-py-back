@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from dataclasses import dataclass
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 CORS(app)
 api = Api(app)
 client = MongoClient('mongodb://db:27017')
@@ -37,10 +38,10 @@ class White(Resource):
 class GetAllProducts(Resource):
     def get(self):
         products = productsCollection.find()
-        product_list = list(map(self._replaceId, products))
+        product_list = list(map(self._from_document_to_product, products))
         return jsonify({'products': product_list})
 
-    def _replaceId(self, product):
+    def _from_document_to_product(self, product):
         return Product(id=str(product.get('_id')), title=product.get('title'), 
         description=product.get('description'), price=product.get('price'))
 
@@ -63,7 +64,7 @@ class AdminCheck(Resource):
 
 
 #data classes
-@dataclass(frozen=True)
+@dataclass(order=True)
 class Product:
     id: str
     title: str
