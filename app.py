@@ -4,8 +4,6 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from dataclasses import dataclass
 
-from app.domain.product import Product
-
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 CORS(app)
@@ -63,6 +61,15 @@ class AdminCheck(Resource):
             response = {'admin': False}
         
         return jsonify(response)
+
+
+#data classes
+@dataclass(frozen=True)
+class Product:
+    id: str
+    title: str
+    description: str
+    price: float
 
 
 api.add_resource(Red, '/color/red')
