@@ -36,7 +36,7 @@ class White(Resource):
 class GetAllProducts(Resource):
     def get(self):
         products = productsCollection.find()
-        product_list = list(products)
+        product_list = list(map(products))
         fixed_products = replaceIds(product_list)
         return jsonify({'products': fixed_products})
 
@@ -58,15 +58,9 @@ class AdminCheck(Resource):
         return jsonify(response)
 
 
-def replaceIds(self, products_list):
-    fixed_products = list()
-    for product in products_list:
-        idStr = str(product['_id'])
-        newProd = product
-        newProd['_id'] = idStr
-        fixed_products.append(newProd)
-
-    return fixed_products
+def replaceId(self, product):
+    return {'id': str(product.get('_id'), 'title': product.get('title'), 
+    'description': product.get('description'), 'price': product.get('price'))}
 
 
 api.add_resource(Red, '/color/red')
