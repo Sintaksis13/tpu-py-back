@@ -37,13 +37,14 @@ class GetAllProducts(Resource):
     def get(self):
         products = productsCollection.find()
         product_list = list(products)
-        print(product_list)
-        return jsonify({'products': product_list})
+        fixed_products = replaceIds(product_list)
+        return jsonify({'products': fixed_products})
 
 class CreateProduct(Resource):
     def post(self):
         data = request.get_json()
         inserted = productsCollection.insert_one(data)
+        return str(inserted.inserted_id)
 
 class AdminCheck(Resource):
     def post(self):
@@ -55,6 +56,19 @@ class AdminCheck(Resource):
             response = {'admin': False}
         
         return jsonify(response)
+
+
+def replaceIds(self, products_list) {
+    fixed_products = list()
+    for product in products_list:
+        idStr = str(product['_id'])
+        newProd = product
+        newProd['_id'] = idStr
+        fixed_products.append(newProd)
+
+    return fixed_products
+}
+
 
 api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
