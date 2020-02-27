@@ -42,7 +42,7 @@ class GetAllProducts(Resource):
 
     def _replaceId(self, product):
         return Product(id=str(product.get('_id')), title=product.get('title'), 
-        description=product.get('description'), price=product.get('price')}
+        description=product.get('description'), price=product.get('price'))
 
 class CreateProduct(Resource):
     def post(self):
