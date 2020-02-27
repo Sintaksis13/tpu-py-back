@@ -44,7 +44,6 @@ class CreateProduct(Resource):
     def post(self):
         data = request.get_json()
         inserted = productsCollection.insert_one(data)
-        return inserted.inserted_id
 
 class AdminCheck(Resource):
     def post(self):
