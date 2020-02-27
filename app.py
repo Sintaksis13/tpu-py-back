@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
-from dataclasses import dataclass
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -64,7 +63,6 @@ class AdminCheck(Resource):
 
 
 #data classes
-@dataclass(order=True)
 class Product:
     id: str
     title: str
