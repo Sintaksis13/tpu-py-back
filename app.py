@@ -40,6 +40,17 @@ class GetAllProducts(Resource):
         print(product_list)
         return jsonify({'products': product_list})
 
+class AdminCheck(Resource):
+    def get(self):
+        adminPass = 'pass'
+        data = request.get_json()
+        if data['adminPass'] == adminPass:
+            response = {'admin': True}
+        else:
+            response = {'admin': False}
+        
+        return jsonify(response)
+
 api.add_resource(Red, '/color/red')
 api.add_resource(Blue, '/color/blue')
 api.add_resource(Green, '/color/green')
