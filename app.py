@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from dataclasses import dataclass
 
-from product import Product
+import Product
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
