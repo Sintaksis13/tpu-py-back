@@ -53,7 +53,7 @@ class CreateProduct(Resource):
 
 class DeleteProduct(Resource):
     def delete(self, id):
-        productsCollection.delete_one("_id": ObjectId(id))
+        productsCollection.delete_one({ "_id": ObjectId(id) })
 
 class AdminCheck(Resource):
     def post(self):
