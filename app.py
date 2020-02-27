@@ -59,7 +59,7 @@ class AdminCheck(Resource):
 
 
 def replaceId(self, product):
-    return {'id': str(product.get('_id'), 'title': product.get('title'), 
+    return {'id': str(product.get('_id')), 'title': product.get('title'), 
     'description': product.get('description'), 'price': product.get('price'))}
 
 
