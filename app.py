@@ -10,7 +10,7 @@ client = MongoClient('mongodb://db:27017')
 db = client.projectDB
 
 #collections
-products = db['product']
+productsCollection = db['product']
 
 
 class Red(Resource):
@@ -35,7 +35,7 @@ class White(Resource):
 
 class GetAllProducts(Resource):
     def get(self):
-        products = products.find()
+        products = productsCollection.find()
         print(products)
         return jsonify({'products': products})
 
