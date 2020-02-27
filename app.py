@@ -40,6 +40,12 @@ class GetAllProducts(Resource):
         print(product_list)
         return jsonify({'products': product_list})
 
+class CreateProduct(Resource):
+    def post(self):
+        data = request.get_json()
+        inserted = productsCollection.insert_one(data)
+        return inserted.inserted_id
+
 class AdminCheck(Resource):
     def post(self):
         adminPass = 'pass'
@@ -57,6 +63,7 @@ api.add_resource(Green, '/color/green')
 api.add_resource(Yellow, '/color/yellow')
 api.add_resource(White, '/color/')
 api.add_resource(GetAllProducts, '/products')
+api.add_resource(CreateProduct, '/products')
 api.add_resource(AdminCheck, '/admin/check')
 
 
