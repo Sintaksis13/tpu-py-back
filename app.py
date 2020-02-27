@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from dataclasses import dataclass
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
