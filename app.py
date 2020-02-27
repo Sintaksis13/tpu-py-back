@@ -58,7 +58,7 @@ class AdminCheck(Resource):
         return jsonify(response)
 
 
-def replaceIds(self, products_list) {
+def replaceIds(self, products_list):
     fixed_products = list()
     for product in products_list:
         idStr = str(product['_id'])
@@ -67,7 +67,6 @@ def replaceIds(self, products_list) {
         fixed_products.append(newProd)
 
     return fixed_products
-}
 
 
 api.add_resource(Red, '/color/red')
